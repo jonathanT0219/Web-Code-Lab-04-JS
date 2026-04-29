@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var electric;
+        var water;
+        var input;
+        electric = 'list of electric : ';
+        water = 'list of water : ';
+
+        for(var counter = 1; counter <= 3; counter++){
+            var input = prompt('Masukkan Nama Pokemon');
+            if(input === 'pikachu' || input === 'raichu'|| input === 'elekid' ){
+                electric += input + ', ';
+            }
+            if(input === 'squirtle' || input === 'lapras'|| input === 'greninja' ){
+                water += input + ', ';
+            }
+        }
+        console.log(electric);
+        console.log(water);
+    </script>
+</body>
+</html>

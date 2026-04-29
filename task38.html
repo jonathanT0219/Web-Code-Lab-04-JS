@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body{
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f1f1;
+        }
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+        select {
+            appearance: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table id="formAwal" class="w3-card-4 w3-white w3-round-large" style="border: none; width: 500px;">
+        <tbody>
+            <tr>
+                <th colspan="2" class="w3-xlarge w3-padding-16"><b>Create Account</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <form action="">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block;" type="text" id="fname" name="fname" placeholder="First Name">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block; margin-left: 2%;" type="text" id="lname" name="lname" placeholder="Last Name">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <form action="">
+                        <select class="w3-select w3-light-grey w3-round w3-padding" name="country" id="country">
+                            <option value="" disabled="" selected="">Country</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Japan">Japan</option>
+                            <option value="South Korea">South Korea</option>
+                            <option value="China">China</option>
+                        </select>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form action="">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block;" type="email" id="email" name="email" placeholder="Email Address">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block; margin-left: 2%;" type="number" id="phone" name="phone" placeholder="Phone Number">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form action="">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block;" type="password" id="password" name="password" placeholder="Password">
+                        <input class="w3-input w3-light-grey w3-round" style="width: 48%; display: inline-block; margin-left: 2%;" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form>
+                        <input class="w3-check" type="checkbox" name="terms" id="terms">
+                        <label for="terms" class="w3-margin-left">Terms and Conditions</label>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding-bottom: 24px;">
+                    <form action="">
+                        <input class="w3-button w3-blue w3-round-large" style="width: 50%;" type="submit" value="Create" id="submit">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="formHasil" class="w3-card-4 w3-white w3-round-large w3-padding-32" style="width: 500px; display: none;">
+        <h2 class="w3-center w3-margin-bottom"><b>Data Tersimpan</b></h2>
+        <div id="isiData" class="w3-padding"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        document.getElementById("submit").addEventListener("click", function(event) {
+            event.preventDefault();
+
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const country = document.getElementById("country").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            const termsChecked = document.getElementById("terms").checked;
+
+            if (!fname || !lname || !country || !email || !phone || !password || !confirmPassword) {
+                alert("Belum lengkap semua data.");
+                return;
+            }
+            var statusPass = " ";
+            if (password === confirmPassword) {
+                statusPass = "Sama";
+            } else {
+                statusPass = "Tidak Sama";
+            }
+
+            if (!termsChecked) {
+                alert("Anda harus menyetujui syarat dan ketentuan.");
+                return;
+            }
+
+            document.getElementById("formAwal").style.display = "none";
+        
+            document.getElementById("isiData").innerHTML = 
+                "<p><b>First Name:</b> " + fname + "</p>" +
+                "<p><b>Last Name:</b> " + lname + "</p>" +
+                "<p><b>Country:</b> " + country + "</p>" +
+                "<p><b>Email:</b> " + email + "</p>" +
+                "<p><b>Phone:</b> " + phone + "</p>" +
+                "<hr>" +
+                "<p><b>Keterangan Password:</b> " + statusPass + "</p>";
+            document.getElementById("formHasil").style.display = "block";
+        });
+    </script>
+</body>
+</html>

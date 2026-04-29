@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var fruits = [];
+        var lanjut = true;
+
+        for (var i = 0; lanjut == true; i++){
+            var input = prompt("Masukkan nama buah : (Ketik 'stop' untuk berhenti)");
+            if (input == "stop"){
+                lanjut = false;
+            } else {
+                fruits.push(input);
+            }
+        }
+        console.log("Daftar buah yang dimasukkan :");
+        console.log(fruits);
+    </script>
+</body>
+</html>

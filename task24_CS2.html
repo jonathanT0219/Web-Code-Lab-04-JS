@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var skorUser = 0;
+        var skorComputer = 0;
+
+        for (var i = 1; i <= 3; i++) {
+            var user = prompt("Masukkan pilihan (batu / gunting / kertas):");
+            
+            var random = Math.floor(Math.random() * 3) + 1;
+            var computer = "";
+
+            if (random == 1) {
+                computer = "batu";
+            } else if (random == 2) {
+                computer = "gunting";
+            } else {
+                computer = "kertas";
+            }
+
+            if (user == computer) {
+                console.log("User " + user + " Vs Computer " + computer + " = Draw");
+            } else if (user == "batu" && computer == "gunting") {
+                console.log("User " + user + " Vs Computer " + computer + " = User Wins");
+                skorUser++;
+            } else if (user == "gunting" && computer == "kertas") {
+                console.log("User " + user + " Vs Computer " + computer + " = User Wins");
+                skorUser++;
+            } else if (user == "kertas" && computer == "batu") {
+                console.log("User " + user + " Vs Computer " + computer + " = User Wins");
+                skorUser++;
+            } else {
+                console.log("User " + user + " Vs Computer " + computer + " = Computer Wins");
+                skorComputer++;
+            }
+        }
+        
+        if (skorUser > skorComputer) {
+            console.log("User wins the game !");
+        } else if (skorComputer > skorUser) {
+            console.log("Computer wins the game !");
+        } else {
+            console.log("Draw game!");
+        }
+
+    </script>
+</body>
+</html>
