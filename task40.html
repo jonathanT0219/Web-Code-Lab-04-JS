@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Extended</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <p id="quoteText">Programmer: A machine that turns coffee into code.</p>
+        </div>
+        <div class="button">
+            <button onclick="ubahQuote()">Ganti Quote</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var array = [
+            "Programmer: A machine that turns coffee into code.",
+            "Computers are fast, programmers keep it slow.",
+            "When I wrote this code, only God and I understood what I did. Now only God knows.",
+            "A son asked his father (a programmer) why the sun rises in the east, and sets in the west. His response? It works, don’t touch!",
+            "How many programmers does it take to change a light bulb? None, that’s a hardware problem.",
+            "Programming is like sex: One mistake and you have to support it for the rest of your life.",
+            "Programming can be fun, and so can cryptography; however, they should not be combined.",
+            "Copy-and-Paste was programmed by programmers for programmers actually.",
+            "Always code as if the person who ends up maintaining your code will be a violent psychopath who knows where you live."
+        ];
+
+        function ubahQuote(){
+            var quote = document.getElementById('quoteText');
+            quote.innerHTML = array[Math.floor(Math.random() * array.length)];
+        }
+
+    </script>
+</body>
+</html>

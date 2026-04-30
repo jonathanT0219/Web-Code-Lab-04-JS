@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Extended</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20%;
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="displayWaktu">00:00:00</div>
+
+    <script type="text/javascript">
+        function jalankanJam() {
+            var waktu = new Date();
+            
+            var jam = waktu.getHours();
+            var menit = waktu.getMinutes();
+            var detik = waktu.getSeconds();
+            
+            if (jam < 10) {
+                jam = "0" + jam; 
+            }
+            if (menit < 10) { 
+                menit = "0" + menit; 
+            }
+            if (detik < 10) { 
+                detik = "0" + detik; 
+            }
+
+            var teksWaktu = jam + ":" + menit + ":" + detik;
+            document.getElementById("displayWaktu").innerText = teksWaktu;
+        }
+        jalankanJam();
+        setInterval(jalankanJam, 1000);
+    </script>
+</body>
+</html>

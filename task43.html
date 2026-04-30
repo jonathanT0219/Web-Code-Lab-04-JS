@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Extended</title>
+    <style>
+        #gambar {
+            align-items: center;
+            display: block;
+            height: 200px;
+        }
+
+        button {
+            display: inline;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="gambar" src="https://images.pexels.com/photos/33037630/pexels-photo-33037630.jpeg" alt="">
+        <button type="button" onclick="ubahGambar()">Mundur</button>
+        <button type="button" onclick="ubahGambar()">Maju</button>
+    </div>
+
+    <script type="text/javascript">
+        var array = [
+            "https://images.pexels.com/photos/33037630/pexels-photo-33037630.jpeg",
+            "https://images.pexels.com/photos/17875617/pexels-photo-17875617.jpeg",
+            "https://images.pexels.com/photos/8134223/pexels-photo-8134223.jpeg"
+        ];
+
+        var index = 0;
+        document.getElementById('gambar').src = array[index];
+
+        function ubahGambar(){
+            var gambar = document.getElementById('gambar');
+            var button = event.target.innerText;
+
+            if (button === "Maju") {
+                index++;
+                if (index > 2) {
+                    index = 0;
+                }
+                
+            } else if (button === "Mundur") {
+                index--;
+                if (index < 0) {
+                    index = 2;
+                }
+            }
+
+            gambar.src = array[index];
+        }
+    </script>
+</body>
+</html>

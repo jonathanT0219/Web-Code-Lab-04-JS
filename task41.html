@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Extended</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 20%;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s; 
+        }
+
+        .dark-theme {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Halo Semua!</h2>
+    <p>Coba klik tombol di bawah ini!</p>
+    <button onclick="ubahTema()">Ubah Tema</button>
+
+    <script type="text/javascript">
+        function ubahTema() {
+            if (document.body.className === "dark-theme") {
+                document.body.className = "";
+                } else {
+                document.body.className = "dark-theme";
+            }
+        }
+    </script>
+</body>
+</html>

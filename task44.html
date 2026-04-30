@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Extended</title>
+</head>
+<body>
+    
+    <h1 id="displayWaktu">00:00:00:00</h1>
+
+    <button onclick="mulai()">Mulai</button>
+    <button onclick="berhenti()">Berhenti</button>
+    <button onclick="ulang()">Ulang</button>
+
+    <script type="text/javascript">
+        var jam = 0;
+        var menit = 0;
+        var detik = 0;
+        var mili = 0; 
+        var timer; 
+
+        function mulai() {
+            clearInterval(timer);
+            timer = setInterval(function() {
+                mili++;
+                if (mili === 100) {
+                    mili = 0; 
+                    detik++;  
+                }
+                if (detik === 60) {
+                    detik = 0;
+                    menit++;
+                }
+                if (menit === 60) {
+                    menit = 0;
+                    jam++;
+                }
+
+                var teksJam = String(jam).padStart(2, '0');
+                var teksMenit = String(menit).padStart(2, '0');
+                var teksDetik = String(detik).padStart(2, '0');
+                var teksMili = String(mili).padStart(2, '0');
+                document.getElementById("displayWaktu").innerText = teksJam + ':' + teksMenit + ':' + teksDetik + ':' + teksMili; 
+                
+            },
+            )
+        }
+
+        function berhenti() {
+            clearInterval(timer);
+        }
+
+        function ulang() {
+            clearInterval(timer);
+
+            jam = 0;
+            menit = 0;
+            detik = 0;
+            mili = 0;
+            document.getElementById("displayWaktu").innerText = "00:00:00:00";
+        }
+    </script>
+</body>
+</html>
