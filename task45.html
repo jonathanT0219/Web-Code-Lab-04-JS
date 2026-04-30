@@ -4,10 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Extended</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .captcha-box {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid gray;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .math-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        input {
+            padding: 5px;
+            font-size: 18px;
+            width: 80px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <script type="text/javascript">
+
+    <div class="captcha-box">
+        <h3>CAPTCHA</h3>
         
+        <div class="math-row">
+            <img id="gambar1" src="" alt="Angka 1">
+            <p id="operator">+</p>
+            <img id="gambar2" src="" alt="Angka 2">
+            <p>=</p>
+            <input type="number" id="jawaban">
+        </div>
+
+        <button type="button" onclick="cekCaptcha()">Login</button>
+        <p id="hasil"></p>
+    </div>
+
+    <script type="text/javascript">
+        var array = [
+            "https://images.pexels.com/photos/1339874/pexels-photo-1339874.jpeg", 
+            "https://images.pexels.com/photos/2249528/pexels-photo-2249528.jpeg", 
+            "https://images.pexels.com/photos/8533626/pexels-photo-8533626.jpeg",
+            "https://images.pexels.com/photos/9011378/pexels-photo-9011378.jpeg",
+            "https://images.pexels.com/photos/15271755/pexels-photo-15271755.jpeg",
+            "https://images.pexels.com/photos/19356540/pexels-photo-19356540.jpeg",
+            "https://images.pexels.com/photos/2249533/pexels-photo-2249533.jpeg",
+            "https://images.pexels.com/photos/30774866/pexels-photo-30774866.jpeg",
+            "https://images.pexels.com/photos/5504162/pexels-photo-5504162.jpeg",
+            "https://images.pexels.com/photos/1061134/pexels-photo-1061134.jpeg"
+        ];
+
+        var arrayOperator = ['+', '-'];
+        var number1 = 0;
+        var number2 = 0;
+        var operator = '+';
+
+        function buatCaptcha() {
+            number1 = Math.floor(Math.random() * 10);
+            number2 = Math.floor(Math.random() * 10);
+
+            var indexOperator = Math.floor(Math.random() * 2);
+            randomOperator = arrayOperator[indexOperator];
+
+            document.getElementById('gambar1').src = array[number1];
+            document.getElementById('gambar2').src = array[number2];
+            document.getElementById('operator').innerText = randomOperator;
+        }
+        buatCaptcha();
+
+        function cekCaptcha() {
+            var input = document.getElementById('jawaban').value;
+            var pesan = document.getElementById('hasil');
+            
+            var jawaban = 0;
+            if (randomOperator === '+') {
+                jawaban = number1 + number2;
+            } else if (randomOperator === '-') {
+                jawaban = number1 - number2;
+            }
+
+            if (Number(input) === jawaban) {
+                pesan.innerText = "CAPTCHA is VALID!";
+            } else {
+                pesan.innerText = "CAPTCHA is INVALID!";
+                document.getElementById('jawaban').value = "";
+                buatCaptcha(); 
+            }
+        }
     </script>
 </body>
 </html>
